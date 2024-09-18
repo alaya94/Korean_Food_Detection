@@ -35,7 +35,7 @@ The Script aim to detect korean food and classify it through image .
      
      ```
 
-2. **Run the index creation **:
+2. **Create the index file with Clip and Faiss **:
 - You can run the Script by exectue `Create_index.py`:
      ```
      python Create_index.py 
