@@ -41,11 +41,11 @@ The Script aim to detect korean food and classify it through image .
      python Create_index.py 
 
      ```
-- You can pass this process if you allready has the index file or you allready run the script.
+- You can pass this process if you already has the index file.
   
 3. **Test the models **:
     * You can test the model menu classification by running test_classification.py
-    * you cna test the model menu classification + Yolo detection by running test_detection.py
+    * you can test the model menu classification + Yolo detection by running test_detection.py
 
   
 
