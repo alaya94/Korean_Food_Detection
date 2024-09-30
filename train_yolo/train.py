@@ -5,7 +5,7 @@ from ultralytics import YOLO
 user_secrets = UserSecretsClient()
 
 my_secret = os.get("wandb_api_key") 
-
+train_path='/kaggle/input/train-yolo/data.yaml'
 wandb.login(key=my_secret)
 
 
@@ -14,7 +14,7 @@ model = YOLO('yolov8n.pt')  # You can use yolov8n.pt, yolov8s.pt, etc., dependin
 
 # Train the model
 results = model.train(
-    data='/kaggle/input/train-yolo/data.yaml',  # Path to the data.yaml file
+    data=train_path,  # Path to the data.yaml file
     epochs=100,                     # Number of epochs to train
     imgsz=640,                      # Image size (can be adjusted)
     batch=16,                       # Batch size (adjust depending on your hardware)
