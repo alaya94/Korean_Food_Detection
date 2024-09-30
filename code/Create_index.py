@@ -8,9 +8,9 @@ import faiss
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-index_path = r"C:\Users\user\Documents\code\korean_food_detection\tools\faiss_index.index"
-labels_path = r"C:\Users\user\Documents\code\korean_food_detection\tools\labels.npy"
-train_path=r"C:\Users\user\Documents\code\korean_food_detection\korean_food_v2\train_data'"
+index_path = os.path.join(os.getcwd(),os.pardir, "tools", "faiss_index.index")
+labels_path = os.path.join(os.getcwd(),os.pardir, "tools", "labels.npy")
+train_path = os.path.join(os.getcwd(), os.pardir,"data", "train")
 
 class FoodImageDataset(Dataset):
     def __init__(self, root_dir, transform=None):

@@ -10,9 +10,9 @@ from torch.utils.data import DataLoader, Dataset
 import faiss
 import matplotlib.patches as patches
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-index_path = r"C:\Users\user\Documents\code\korean_food_detection\tools\faiss_index.index"
-labels_path = r"C:\Users\user\Documents\code\korean_food_detection\tools\labels.npy"
-yolo_model_path = r"/kaggle/input/food-detector/food_detection_best.pt"
+index_path = os.path.join(os.getcwd(),os.pardir, "tools", "faiss_index.index")
+labels_path = os.path.join(os.getcwd(),os.pardir, "tools", "labels.npy")
+yolo_model_path = os.path.join(os.getcwd(), os.pardir,"data", "food_detection_best")
 yolo_model = YOLO(yolo_model_path)
 model, preprocess = clip.load("ViT-L/14@336px", device=device)
 

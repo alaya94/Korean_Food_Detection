@@ -85,7 +85,8 @@ def clip_transform(image):
 
 
 if __name__ == "__main__":
-    image = Image.open(r'C:\Users\user\Documents\code\korean_food_detection\korean_food -v1\sorted_images\baek Kimchi\images---2021-10-26T195713-358_jpg.rf.211da69e04ac8584ce879fd7c9911b09.jpg').convert('RGB')
+    image_path="r'C:\Users\user\Documents\code\korean_food_detection\korean_food -v1\sorted_images\baek Kimchi\images---2021-10-26T195713-358_jpg.rf.211da69e04ac8584ce879fd7c9911b09.jpg'"
+    image = Image.open(image_path).convert('RGB')
     # Load the FAISS index and labels
     faiss_index = load_faiss_index(index_path)
     model, preprocess = clip.load("ViT-L/14@336px", device=device)
