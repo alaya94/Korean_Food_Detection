@@ -25,9 +25,9 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 index_path = r"C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_tools\faiss_index_10.index"
 labels_path = r"C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_tools\labels_10.npy"
 sam_checkpoint = r"C:\Users\user\Documents\code\korean_food_detection\tools\sam_vit_b_01ec64.pth"
-# image_path = r'C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_exemples\KakaoTalk_20240926_134421785_06.jpg'
+image_path = r'C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_exemples\KakaoTalk_20240926_134421785_06.jpg'
 # image_path = r'C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_exemples\KakaoTalk_20240926_134421785_11.jpg'
-image_path = r'C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_exemples\KakaoTalk_20240926_134421785_13.jpg'
+# image_path = r'C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_exemples\KakaoTalk_20240926_134421785_13.jpg'
 model_type = "vit_b"
 
 def classify_image(model, faiss_index, image, transform, device, labels):
