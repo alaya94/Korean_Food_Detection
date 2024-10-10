@@ -35,7 +35,17 @@ The Script aim to detect korean food and classify it through image .
      
      ```
 
-2. **Create the index file with Clip and Faiss **:
+2. **Check models**:
+- In the tools directory 4 files need to be available:
+    * faiss_index.index : File generate by Create_index.py based on the provided training data
+    * labels.npy: labels file associated with faiss_index.index file.
+    * best.pt: Yolov8 trained plate detection model.
+    * sam_vit_b_01ec64.pth: Pretrained SAM mode by Meta. You can download it from here "https://www.kaggle.com/datasets/seshurajup/segment-anything-models"
+
+
+
+
+3. **Create the index file with Clip and Faiss (optional)**:
 - You can run the Script by exectue `Create_index.py`:
      ```
      python Create_index.py 
@@ -43,9 +53,10 @@ The Script aim to detect korean food and classify it through image .
      ```
 - You can pass this process if you already has the index file.
   
-3. **Test the models **:
+4. **Test the models **:
     * You can test the model menu classification by running test_classification.py
     * you can test the model menu classification + Yolo detection by running test_detection.py
+    * you can test the model menu classification + Yolo detection + Sam segmentation by running main.py
 
   
 
