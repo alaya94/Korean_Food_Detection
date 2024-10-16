@@ -66,7 +66,7 @@ The Script aim to detect korean food and classify it through image .
      rl = "http://127.0.0.1:8000/detect-food/"
 
       # Provide the image URL in the payload
-      file_path = r"C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_exemples\KakaoTalk_20240926_134421785_11.jpg"
+      file_path = r"IMAGE_PATH"
 
       # Prepare the file to send as 'file'
       files = {"file": open(file_path, "rb")}
