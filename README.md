@@ -58,6 +58,36 @@ The Script aim to detect korean food and classify it through image .
     * you can test the model menu classification + Yolo detection by running test_detection.py
     * you can test the model menu classification + Yolo detection + Sam segmentation by running main.py
 
+
+5. **Run Script in API mode**:
+    * You can run the API by running app.py using this command: uvicorn app:app --reload
+    * you can test the API using this code:  
+    ```
+     rl = "http://127.0.0.1:8000/detect-food/"
+
+      # Provide the image URL in the payload
+      file_path = r"C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_exemples\KakaoTalk_20240926_134421785_11.jpg"
+
+      # Prepare the file to send as 'file'
+      files = {"file": open(file_path, "rb")}
+
+      # Send a POST request to the API
+      response = requests.post(url, files=files)
+
+      # Check the status of the response
+      if response.status_code == 200:
+          # If the request was successful, the image is returned as a file attachment
+          # Save the image to a local file
+          with open("detected_food.jpg", "wb") as file:
+              file.write(response.content)
+          print("Image saved as 'detected_food.jpg'")
+      else:
+          print(f"Error: {response.status_code}, {response.text}")
+
+     ```
+    
+   
+
   
 
   

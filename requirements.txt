@@ -5,3 +5,5 @@ openai
 opencv-python
 ultralytics
 segment-anything
+fastapi
+python-multipart

@@ -118,18 +118,64 @@ def process_detections(detections, confidences, image_np, model, faiss_index, sa
     return results, all_masks
 
 
-def main(image_path,index_path,labels_path,sam_checkpoint,model_type,yolo_path,PREDICT_ARGS,device):
+# def main(image_path,index_path,labels_path,sam_checkpoint,model_type,yolo_path,PREDICT_ARGS,device):
+#     # Load models and data
+#     yolo_model = YOLO(yolo_path)
+#     faiss_index, labels, model, preprocess, sam_predictor = load_models(index_path, labels_path, sam_checkpoint, model_type, device)
+
+#     # Load and preprocess image
+    
+#     image, image_np = load_and_resize_image(image_path)
+
+#     # Detect objects
+
+#      # Define your prediction arguments
+#     detection_results = detect_objects(yolo_model, image, PREDICT_ARGS)
+
+#     if len(detection_results) > 0:
+#         detections = detection_results[0].boxes.xyxy
+#         confidences = detection_results[0].boxes.conf
+
+#         # Generate random colors
+#         colors_list = list(colors.CSS4_COLORS.keys())
+#         np.random.seed(42)
+#         random_colors = np.random.choice(colors_list, size=len(detections), replace=False)
+
+#         # Set the image for SAM predictor
+#         sam_predictor.set_image(image_np)
+
+#         # Process detections
+#         results, all_masks = process_detections(detections, confidences, image_np, model, faiss_index, sam_predictor, preprocess, device, labels)
+
+#         # Plot results
+#         fig, ax = plt.subplots(1, figsize=(12, 8))
+#         plot_results(ax, image_np, results, all_masks, random_colors)
+#         plt.show()
+#     else:
+#         print("No objects detected.")
+
+# if __name__ == "__main__":
+#     main(image_path,index_path,labels_path,sam_checkpoint,model_type,yolo_path,PREDICT_ARGS,device)
+
+
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.responses import FileResponse
+import httpx
+from io import BytesIO
+import tempfile
+import uvicorn
+app = FastAPI()
+yolo_model = YOLO(yolo_path)
+faiss_index, labels, model, preprocess, sam_predictor = load_models(index_path, labels_path, sam_checkpoint, model_type, device)
+async def main(image_path, PREDICT_ARGS, device):
     # Load models and data
-    yolo_model = YOLO(yolo_path)
-    faiss_index, labels, model, preprocess, sam_predictor = load_models(index_path, labels_path, sam_checkpoint, model_type, device)
+    # yolo_model = YOLO(yolo_path)
+    # faiss_index, labels, model, preprocess, sam_predictor = load_models(index_path, labels_path, sam_checkpoint, model_type, device)
 
     # Load and preprocess image
-    
     image, image_np = load_and_resize_image(image_path)
 
     # Detect objects
-
-     # Define your prediction arguments
     detection_results = detect_objects(yolo_model, image, PREDICT_ARGS)
 
     if len(detection_results) > 0:
@@ -150,9 +196,43 @@ def main(image_path,index_path,labels_path,sam_checkpoint,model_type,yolo_path,P
         # Plot results
         fig, ax = plt.subplots(1, figsize=(12, 8))
         plot_results(ax, image_np, results, all_masks, random_colors)
-        plt.show()
-    else:
-        print("No objects detected.")
 
-if __name__ == "__main__":
-    main(image_path,index_path,labels_path,sam_checkpoint,model_type,yolo_path,PREDICT_ARGS,device)
+        # Save the image with detections
+        result_image_path = tempfile.mktemp(suffix=".jpg")
+        plt.savefig(result_image_path)
+        plt.close()
+
+        return result_image_path
+    else:
+        return None
+
+from fastapi import FastAPI, File, UploadFile
+
+@app.post("/detect-food/")
+async def detect_food(file: UploadFile = File(...)):
+    try:
+        # Read the file and process it
+        contents = await file.read()
+        image = Image.open(BytesIO(contents))
+        
+        # Process the image (same logic as before)
+        temp_image_path = tempfile.mktemp(suffix=".jpg")
+        image.save(temp_image_path)
+
+        result_image_path = await main(temp_image_path, PREDICT_ARGS, device)
+        
+        if result_image_path:
+            return FileResponse(result_image_path, media_type='image/jpeg', headers={"Content-Disposition": "attachment; filename=detected_food.jpg"})
+        else:
+            raise HTTPException(status_code=404, detail="No food detected in the image.")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error processing the file: {str(e)}")
+
+
+
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+
+
