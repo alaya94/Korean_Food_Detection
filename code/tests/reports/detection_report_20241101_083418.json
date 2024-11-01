@@ -1,0 +1,57 @@
+{
+    "metadata": {
+        "timestamp": "2024-11-01 08:34:18",
+        "image_path": "detected_food.jpg"
+    },
+    "detection_results": {
+        "detections": [
+            {
+                "label": "Fried egg",
+                "confidence": 0.85
+            },
+            {
+                "label": "Beansprouts",
+                "confidence": 0.87
+            },
+            {
+                "label": "Cabbage kimchi",
+                "confidence": 0.81
+            },
+            {
+                "label": "Grilled offal",
+                "confidence": 0.82
+            }
+        ],
+        "confidence_statistics": {
+            "mean": 0.8375,
+            "median": 0.835,
+            "min": 0.81,
+            "max": 0.87,
+            "std": 0.023848480035423628
+        },
+        "class_distribution": {
+            "Fried egg": 1,
+            "Beansprouts": 1,
+            "Cabbage kimchi": 1,
+            "Grilled offal": 1
+        },
+        "confidence_plot_path": "reports\\confidence_plot_20241101_083418.png"
+    },
+    "segmentation_results": {
+        "metrics": {
+            "mean_iou": 0.892,
+            "best_iou": 0.905,
+            "worst_iou": 0.809,
+            "per_class_iou": {
+                "Fried egg": 0,
+                "Beansprouts": 0,
+                "Cabbage kimchi": 0,
+                "Grilled offal": 0
+            }
+        },
+        "visualization_paths": {
+            "iou_plot": "reports\\iou_plot_20241101_083418.png",
+            "segmentation_visualization": "reports\\segmentation_vis_20241101_083418.png"
+        }
+    }
+}
