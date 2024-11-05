@@ -1,8 +1,9 @@
 {
     "metadata": {
-        "timestamp": "2024-11-01 08:35:11",
-        "image_path": "detected_food.jpg"
+        "timestamp": "2024-11-04 09:34:22",
+        "image_path": "..\\..\\test_exemples\\2-d.jpg"
     },
+    // Menu recognition: Goal:0.93
     "detection_results": {
         "detections": [
             {
@@ -35,17 +36,23 @@
             "Cabbage kimchi": 1,
             "Grilled offal": 1
         },
-        "confidence_plot_path": "reports\\confidence_plot_20241101_083511.png"
+        "confidence_plot_path": "reports\\confidence_plot_20241104_093421.png"
     },
     "segmentation_results": {
+        // Menu seperation: Goal:0.93 
         "metrics": {
-            "mean_iou": 0.899,
-            "best_iou": 0.861,
-            "worst_iou": 0.816
+            "mean_iou": 0.887,
+            
+            "best_iou": 0.881,
+            "worst_iou": 0.823
         },
         "visualization_paths": {
-            "iou_plot": "reports\\iou_plot_20241101_083511.png",
-            "segmentation_visualization": "reports\\segmentation_vis_20241101_083511.png"
+            "iou_plot": "reports\\iou_plot_20241104_093421.png",
+            "segmentation_visualization": "reports\\segmentation_vis_20241104_093421.png"
+        },
+        // Goal:0.93 
+        "Label_Accuracy": {
+            "accuracy": 0.85
         }
     }
 }
