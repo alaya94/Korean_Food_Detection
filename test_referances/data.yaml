@@ -1,0 +1,13 @@
+train: C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_referances\train\images
+val: C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_referances\train\images
+test: C:\Users\user\Documents\GitHub\Korean_Food_Detection\test_referances\train\images
+
+nc: 1
+names: ['food']
+
+roboflow:
+  workspace: food-detection-x3g5d
+  project: test_plates_simples
+  version: 4
+  license: MIT
+  url: https://universe.roboflow.com/food-detection-x3g5d/test_plates_simples/dataset/4

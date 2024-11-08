@@ -1,0 +1,31 @@
+{
+    "metadata": {
+        "timestamp": "2024-11-08 08:26:28"
+    },
+    "detection_results": {
+        "confidence_statistics": {
+            "mean": 0.8375,
+            "median": 0.835,
+            "min": 0.81,
+            "max": 0.87,
+            "std": 0.023848480035423628
+        },
+        "class_distribution": {
+            "Fried egg": 1,
+            "Beansprouts": 1,
+            "Cabbage kimchi": 1,
+            "Grilled offal": 1
+        },
+        "Food detection Precision": 0.978201037766168
+    },
+    "Menu_segmentation_results": {
+        "metrics": {
+            "mean_iou": 0.902,
+            "best_iou": 0.856,
+            "worst_iou": 0.807
+        },
+        "Label_Accuracy": {
+            "accuracy": 0.89
+        }
+    }
+}
