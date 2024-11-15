@@ -17,5 +17,6 @@ def detection_score(model,data_path):
     
 def accuracy_score():
     accuracy=float(0.89)
+    
     return accuracy
 

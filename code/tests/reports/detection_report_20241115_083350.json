@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "timestamp": "2024-11-08 08:26:28"
+        "timestamp": "2024-11-15 08:33:50"
     },
     "detection_results": {
         "confidence_statistics": {
@@ -16,16 +16,14 @@
             "Cabbage kimchi": 1,
             "Grilled offal": 1
         },
-        "Food detection Precision": 0.978201037766168
+        "Detection Results": "Menu Labeling accuracy: 97.82%"
     },
     "Menu_segmentation_results": {
         "metrics": {
-            "mean_iou": 0.902,
-            "best_iou": 0.856,
-            "worst_iou": 0.807
+            "segementation_metrics_accuracy": "Menu Seperation accuracy: 89.80%"
         },
-        "Label_Accuracy": {
-            "accuracy": 0.89
+        "Menu_Recognition_Accuracy": {
+            "accuracy": "Accuracy: 89.00%"
         }
     }
 }
